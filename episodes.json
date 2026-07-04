@@ -1,0 +1,35 @@
+{
+  "shows": [
+    {
+      "id": "lockupp",
+      "name": "Lock Upp",
+      "thumb": "https://picsum.photos/seed/lockupp/600/900",
+      "seasons": [
+        {
+          "season": 1,
+          "title": "Season 1 - Khel Shuru",
+          "episodes": [
+            { "title": "Episode 1 - Pehla Din", "link": "YOUR_VIDEO_LINK_HERE" },
+            { "title": "Episode 2 - Naya Mod", "link": "YOUR_VIDEO_LINK_HERE" },
+            { "title": "Episode 3 - Twist", "link": "YOUR_VIDEO_LINK_HERE" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alliance",
+      "name": "Alliance",
+      "thumb": "https://picsum.photos/seed/alliance/600/900",
+      "seasons": [
+        {
+          "season": 1,
+          "title": "Season 1 - Shuruaat",
+          "episodes": [
+            { "title": "Episode 1 - Introduction", "link": "YOUR_VIDEO_LINK_HERE" },
+            { "title": "Episode 2 - Pehli Meeting", "link": "YOUR_VIDEO_LINK_HERE" }
+          ]
+        }
+      ]
+    }
+  ]
+}
