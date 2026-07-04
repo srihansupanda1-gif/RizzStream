@@ -3,15 +3,16 @@
     {
       "id": "lockupp",
       "name": "Lock Upp",
-      "thumb": "https://picsum.photos/seed/lockupp/600/900",
+      "poster": "images/lockupp-poster.png",
+      "banner": "images/lockupp-banner.png",
       "seasons": [
         {
-          "season": 1,
-          "title": "Season 1 - Khel Shuru",
+          "season": 2,
+          "title": "Season 2 - Naya Junoon",
           "episodes": [
-            { "title": "Episode 1", "link": "YOUR_VIDEO_LINK_HERE" },
-            { "title": "Episode 2", "link": "YOUR_VIDEO_LINK_HERE" },
-            { "title": "Episode 3", "link": "YOUR_VIDEO_LINK_HERE" }
+            { "title": "Episode 1 - Wapasi", "link": "YOUR_VIDEO_LINK_HERE" },
+            { "title": "Episode 2 - Naya Challenge", "link": "YOUR_VIDEO_LINK_HERE" },
+            { "title": "Episode 3 - Final Face-off", "link": "YOUR_VIDEO_LINK_HERE" }
           ]
         }
       ]
@@ -19,7 +20,8 @@
     {
       "id": "alliance",
       "name": "Alliance",
-      "thumb": "https://picsum.photos/seed/alliance/600/900",
+      "poster": "images/alliance-poster.png",
+      "banner": "images/lockupp-banner.png",
       "seasons": [
         {
           "season": 1,
