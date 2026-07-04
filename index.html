@@ -630,8 +630,8 @@
     <div class="hero" id="heroSection">
         <div class="hero-content">
             <div class="badge">🔥 Original Series</div>
-            <h1 id="heroTitle">Lock Upp</h1> <!-- ✅ अब यहाँ Lock Upp लिखा है -->
-            <p id="heroDesc">Reality • Drama • Thriller • Watch the gripping journey of contestants locked in a high-stakes game.</p> <!-- ✅ Description भी बदला -->
+            <h1 id="heroTitle">Lock Upp</h1>
+            <p id="heroDesc">Reality • Drama • Thriller • Watch the gripping journey of contestants locked in a high-stakes game.</p>
             <div>
                 <button class="btn-play" onclick="playFeatured()">▶ Play Now</button>
                 <button class="btn-more" onclick="scrollToShows()">More Info</button>
@@ -663,7 +663,7 @@
         <div class="col">
             <h4>RizzStream</h4>
             <p>Your home for original desi content.</p>
-            <p style="color:#E50914; font-weight:600;">Made with ❤️ for People</p>
+            <p style="color:#E50914; font-weight:600;">Made with ❤️ for People who like good content</p>
         </div>
         <div class="col">
             <h4>Quick Links</h4>
@@ -719,6 +719,7 @@
             const totalEps = show.seasons.reduce((acc, s) => acc + s.episodes.length, 0);
             document.getElementById('heroDesc').textContent = `${show.seasons.length} Seasons • ${totalEps} Episodes • Click Play to start watching.`;
             const hero = document.getElementById('heroSection');
+            // ✅ यहाँ बदलाव किया है - अब JSON से banner पढ़ेगा
             hero.style.backgroundImage = `linear-gradient(90deg, #0f0f0f 30%, transparent 70%), url('${show.banner || 'https://picsum.photos/seed/lockupp/1200/600'}')`;
         }
 
@@ -742,7 +743,7 @@
                 let totalEps = 0;
                 show.seasons.forEach(s => totalEps += s.episodes.length);
 
-                // Using picsum.photos for cinematic random thumbnails
+                // ✅ यहाँ बदलाव किया है - अब JSON से poster पढ़ेगा
                 const imgSrc = show.poster || `https://picsum.photos/seed/${show.id}/600/900`;
 
                 grid.innerHTML += `
