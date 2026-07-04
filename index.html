@@ -487,8 +487,10 @@
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
+            background: #000;
         }
-        .video-wrapper iframe {
+        .video-wrapper iframe,
+        .video-wrapper #rumble_player {
             position: absolute;
             top: 0;
             left: 0;
@@ -613,6 +615,11 @@
             }
         }
     </style>
+
+    <!-- ✅ Rumble Monetized Loader Script (सिर्फ एक बार लोड होगा) -->
+    <script>
+        !function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/u4pxf20"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");
+    </script>
 </head>
 <body>
 
@@ -663,7 +670,7 @@
         <div class="col">
             <h4>RizzStream</h4>
             <p>Your home for original desi content.</p>
-            <p style="color:#E50914; font-weight:600;">Made with ❤️ for People who like good content</p>
+            <p style="color:#E50914; font-weight:600;">Made with ❤️ for People</p>
         </div>
         <div class="col">
             <h4>Quick Links</h4>
@@ -685,8 +692,8 @@
     <div id="videoModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeVideo()">×</span>
-            <div class="video-wrapper">
-                <iframe id="videoFrame" src="" allowfullscreen></iframe>
+            <div class="video-wrapper" id="videoWrapper">
+                <!-- यहाँ Rumble Player या Iframe डायनामिक रूप से आएगा -->
             </div>
             <div class="modal-footer">
                 <span>▶️ <strong id="modalTitle">Playing...</strong></span>
@@ -719,7 +726,6 @@
             const totalEps = show.seasons.reduce((acc, s) => acc + s.episodes.length, 0);
             document.getElementById('heroDesc').textContent = `${show.seasons.length} Seasons • ${totalEps} Episodes • Click Play to start watching.`;
             const hero = document.getElementById('heroSection');
-            // ✅ यहाँ बदलाव किया है - अब JSON से banner पढ़ेगा
             hero.style.backgroundImage = `linear-gradient(90deg, #0f0f0f 30%, transparent 70%), url('${show.banner || 'https://picsum.photos/seed/lockupp/1200/600'}')`;
         }
 
@@ -743,7 +749,6 @@
                 let totalEps = 0;
                 show.seasons.forEach(s => totalEps += s.episodes.length);
 
-                // ✅ यहाँ बदलाव किया है - अब JSON से poster पढ़ेगा
                 const imgSrc = show.poster || `https://picsum.photos/seed/${show.id}/600/900`;
 
                 grid.innerHTML += `
@@ -840,23 +845,52 @@
             container.innerHTML = '';
         }
 
-        // --- Play Video ---
+        // =========================================================
+        // ✅ यह है आपका नया Play Video Function (Rumble Monetized Ready)
+        // =========================================================
         function playVideo(link, title) {
             if (!link || link === 'YOUR_VIDEO_LINK_HERE' || link.includes('YOUR_')) {
-                alert('⚠️ Video link is not set! Please update the episodes.json file with a valid embed link (Dailymotion/Rumble/Drive).');
+                alert('⚠️ Video link is not set! Please update the episodes.json file.');
                 return;
             }
-            document.getElementById('videoFrame').src = link;
-            document.getElementById('modalTitle').textContent = title;
-            document.getElementById('videoModal').classList.add('active');
+
+            const modal = document.getElementById('videoModal');
+            const wrapper = document.getElementById('videoWrapper');
+            const titleEl = document.getElementById('modalTitle');
+
+            // अगर link Rumble की ID है (जैसे v7a1qaq)
+            if (link.length < 20 && !link.includes('http')) {
+                // Wrapper को खाली करके Rumble Player का Div बनाएं
+                wrapper.innerHTML = `<div id="rumble_player" style="width:100%;height:100%;"></div>`;
+                
+                // Rumble API को Call करें
+                if (typeof Rumble !== 'undefined') {
+                    Rumble("play", {
+                        "video": link,
+                        "div": "rumble_player"
+                    });
+                } else {
+                    alert('Rumble player not loaded. Please refresh the page.');
+                    wrapper.innerHTML = `<p style="color:red;padding:20px;">Rumble player error. Please refresh.</p>`;
+                }
+            } else {
+                // अगर normal embed link है (YouTube, Dailymotion, etc)
+                wrapper.innerHTML = `<iframe src="${link}" frameborder="0" allowfullscreen style="width:100%;height:100%;position:absolute;top:0;left:0;"></iframe>`;
+            }
+
+            titleEl.textContent = title;
+            modal.classList.add('active');
         }
 
-        // --- Close Video ---
+        // --- Close Video (Player को पूरी तरह से Clear कर देगा) ---
         function closeVideo() {
             document.getElementById('videoModal').classList.remove('active');
-            document.getElementById('videoFrame').src = '';
+            const wrapper = document.getElementById('videoWrapper');
+            wrapper.innerHTML = ''; // Player को रोकने/हटाने के लिए
+            document.getElementById('modalTitle').textContent = 'Playing...';
         }
 
+        // Modal के बाहर क्लिक करने पर बंद करें
         window.onclick = function(event) {
             const modal = document.getElementById('videoModal');
             if (event.target === modal) closeVideo();

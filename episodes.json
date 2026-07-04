@@ -3,15 +3,15 @@
     {
       "id": "lockupp",
       "name": "Lock Upp",
-      "poster": "images/lockupp-poster.jpg",
-      "banner": "images/lockupp-banner.jpg",
+      "poster": "images/lockupp-poster.png",
+      "banner": "images/lockupp-banner.png",
       "seasons": [
         {
           "season": 2,
           "title": "Season 2 - Naya Junoon",
           "episodes": [
-            { "title": "Episode 1 - Wapasi", "link": "YOUR_VIDEO_LINK_HERE" },
-            { "title": "Episode 2 - Naya Challenge", "link": "YOUR_VIDEO_LINK_HERE" }
+            { "title": "Episode 1", "link": "v7a1qaq" },
+            { "title": "Episode 2", "link": "YOUR_VIDEO_LINK_HERE" }
           ]
         }
       ]
@@ -19,8 +19,8 @@
     {
       "id": "alliance",
       "name": "Alliance",
-      "poster": "images/alliance-poster.jpg",
-      "banner": "images/lockupp-banner.jpg",
+      "poster": "images/alliance-poster.png",
+      "banner": "images/lockupp-banner.png",
       "seasons": [
         {
           "season": 1,
