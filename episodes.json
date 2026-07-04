@@ -3,16 +3,15 @@
     {
       "id": "lockupp",
       "name": "Lock Upp",
-      "poster": "images/lockupp-poster.png",
-      "banner": "images/lockupp-banner.png",
+      "poster": "images/lockupp-poster.jpg",
+      "banner": "images/lockupp-banner.jpg",
       "seasons": [
         {
           "season": 2,
           "title": "Season 2 - Naya Junoon",
           "episodes": [
-            { "title": "Episode 1", "link": "YOUR_VIDEO_LINK_HERE" },
-            { "title": "Episode 2", "link": "YOUR_VIDEO_LINK_HERE" },
-            { "title": "Episode 3", "link": "YOUR_VIDEO_LINK_HERE" }
+            { "title": "Episode 1 - Wapasi", "link": "YOUR_VIDEO_LINK_HERE" },
+            { "title": "Episode 2 - Naya Challenge", "link": "YOUR_VIDEO_LINK_HERE" }
           ]
         }
       ]
@@ -20,15 +19,14 @@
     {
       "id": "alliance",
       "name": "Alliance",
-      "poster": "images/alliance_poster.png",
-      "banner": "images/lockupp-banner.png",
+      "poster": "images/alliance-poster.jpg",
+      "banner": "images/lockupp-banner.jpg",
       "seasons": [
         {
           "season": 1,
           "title": "Season 1 - Shuruaat",
           "episodes": [
-            { "title": "Episode 1 - Introduction", "link": "YOUR_VIDEO_LINK_HERE" },
-            { "title": "Episode 2 - Pehli Meeting", "link": "YOUR_VIDEO_LINK_HERE" }
+            { "title": "Episode 1 - Introduction", "link": "YOUR_VIDEO_LINK_HERE" }
           ]
         }
       ]
