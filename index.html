@@ -719,7 +719,7 @@
             const totalEps = show.seasons.reduce((acc, s) => acc + s.episodes.length, 0);
             document.getElementById('heroDesc').textContent = `${show.seasons.length} Seasons • ${totalEps} Episodes • Click Play to start watching.`;
             const hero = document.getElementById('heroSection');
-            hero.style.backgroundImage = `linear-gradient(90deg, #0f0f0f 30%, transparent 70%), url('https://picsum.photos/seed/${show.id}/1200/600')`;
+            hero.style.backgroundImage = `linear-gradient(90deg, #0f0f0f 30%, transparent 70%), url('${show.banner || 'https://picsum.photos/seed/lockupp/1200/600'}')`;
         }
 
         function playFeatured() {
@@ -743,7 +743,7 @@
                 show.seasons.forEach(s => totalEps += s.episodes.length);
 
                 // Using picsum.photos for cinematic random thumbnails
-                const imgSrc = `https://picsum.photos/seed/${show.id}_${idx}/600/900`;
+                const imgSrc = show.poster || `https://picsum.photos/seed/${show.id}/600/900`;
 
                 grid.innerHTML += `
                     <div class="show-card" onclick="loadEpisodes('${show.id}')" style="animation-delay: ${idx * 0.1}s">

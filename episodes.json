@@ -20,7 +20,7 @@
     {
       "id": "alliance",
       "name": "Alliance",
-      "poster": "images/alliance-poster.png",
+      "poster": "images/alliance_poster.png",
       "banner": "images/lockupp-banner.png",
       "seasons": [
         {
