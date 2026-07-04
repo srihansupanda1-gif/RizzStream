@@ -10,9 +10,9 @@
           "season": 2,
           "title": "Season 2 - Naya Junoon",
           "episodes": [
-            { "title": "Episode 1 - Wapasi", "link": "YOUR_VIDEO_LINK_HERE" },
-            { "title": "Episode 2 - Naya Challenge", "link": "YOUR_VIDEO_LINK_HERE" },
-            { "title": "Episode 3 - Final Face-off", "link": "YOUR_VIDEO_LINK_HERE" }
+            { "title": "Episode 1", "link": "YOUR_VIDEO_LINK_HERE" },
+            { "title": "Episode 2", "link": "YOUR_VIDEO_LINK_HERE" },
+            { "title": "Episode 3", "link": "YOUR_VIDEO_LINK_HERE" }
           ]
         }
       ]
