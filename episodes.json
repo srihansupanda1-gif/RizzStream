@@ -26,8 +26,8 @@
           "season": 1,
           "title": "Season 1 - Shuruaat",
           "episodes": [
-            { "title": "Episode 1 ", "link": "https://rumble.com/embed/v7a1qaq/?pub=4pxf20" }
-            { "title": "Episode 2 ", "link": "https://rumble.com/embed/v7a6u68/?pub=4pxf20" }
+            { "title": "Episode 1 ", "link": "https://rumble.com/embed/v7a1qaq/?pub=4pxf20" },
+            { "title": "Episode 2 ", "link": "https://rumble.com/embed/v7a6u68/?pub=4pxf20" },
             { "title": "Episode 3 ", "link": "https://rumble.com/embed/v7a6usw/?pub=4pxf20" }
           ]
         }
