@@ -705,17 +705,58 @@
         let showsData = [];
         let currentShowId = null;
 
+        const fallbackEpisodeData = {
+            shows: [
+                {
+                    id: 'lockupp',
+                    name: 'Lock Upp',
+                    poster: 'images/lockupp-poster.png',
+                    banner: 'images/lockupp-banner.png',
+                    seasons: [
+                        {
+                            season: 2,
+                            title: 'Season 2 - Naya Junoon',
+                            episodes: [
+                                { title: 'Episode 1', link: 'https://rumble.com/embed/v7a1qaq/?pub=4pxf20' },
+                                { title: 'Episode 2', link: 'https://rumble.com/embed/v7a1qaq/?pub=4pxf20' }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'alliance',
+                    name: 'Alliance',
+                    poster: 'images/alliance-poster.png',
+                    banner: 'images/lockupp-banner.png',
+                    seasons: [
+                        {
+                            season: 1,
+                            title: 'Season 1 - Shuruaat',
+                            episodes: [
+                                { title: 'Episode 1 - Introduction', link: 'https://rumble.com/embed/v7a1qaq/?pub=4pxf20' }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
         // --- Fetch Data ---
         fetch('episodes.json')
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) throw new Error('Network response was not OK');
+                return res.json();
+            })
             .then(data => {
                 showsData = data.shows;
                 renderShows();
                 updateHero(showsData[0]);
             })
             .catch(err => {
-                console.error('Error loading episodes:', err);
-                document.getElementById('showGrid').innerHTML = '<p style="color:red;">Failed to load episodes.json. Make sure the file exists.</p>';
+                console.warn('Could not load episodes.json, falling back to embedded data.', err);
+                showsData = fallbackEpisodeData.shows;
+                renderShows();
+                updateHero(showsData[0]);
             });
 
         // --- Hero Update ---
