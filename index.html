@@ -488,6 +488,7 @@
             padding-bottom: 56.25%;
             height: 0;
             background: #000;
+            width: 100%;
         }
         .video-wrapper iframe,
         .video-wrapper #rumble_player {
@@ -616,10 +617,8 @@
         }
     </style>
 
-    <!-- ✅ Rumble Monetized Loader Script (सिर्फ एक बार लोड होगा) -->
-    <script>
-        !function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/u4pxf20"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");
-    </script>
+    <!-- ✅ Rumble Embed Script -->
+    <script async src="https://rumble.com/embedjs/u4pxf20" charset="UTF-8"></script>
 </head>
 <body>
 
@@ -846,7 +845,7 @@
         }
 
         // =========================================================
-        // ✅ यह है आपका नया Play Video Function (Rumble Monetized Ready)
+        // ✅ Play Video Function with Monetized Rumble Support
         // =========================================================
         function playVideo(link, title) {
             if (!link || link === 'YOUR_VIDEO_LINK_HERE' || link.includes('YOUR_')) {
@@ -858,25 +857,8 @@
             const wrapper = document.getElementById('videoWrapper');
             const titleEl = document.getElementById('modalTitle');
 
-            // अगर link Rumble की ID है (जैसे v7a1qaq)
-            if (link.length < 20 && !link.includes('http')) {
-                // Wrapper को खाली करके Rumble Player का Div बनाएं
-                wrapper.innerHTML = `<div id="rumble_player" style="width:100%;height:100%;"></div>`;
-                
-                // Rumble API को Call करें
-                if (typeof Rumble !== 'undefined') {
-                    Rumble("play", {
-                        "video": link,
-                        "div": "rumble_player"
-                    });
-                } else {
-                    alert('Rumble player not loaded. Please refresh the page.');
-                    wrapper.innerHTML = `<p style="color:red;padding:20px;">Rumble player error. Please refresh.</p>`;
-                }
-            } else {
-                // अगर normal embed link है (YouTube, Dailymotion, etc)
-                wrapper.innerHTML = `<iframe src="${link}" frameborder="0" allowfullscreen style="width:100%;height:100%;position:absolute;top:0;left:0;"></iframe>`;
-            }
+            // Direct embed - just use the link as-is
+            wrapper.innerHTML = `<iframe src="${link}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 
             titleEl.textContent = title;
             modal.classList.add('active');
